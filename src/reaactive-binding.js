@@ -1,4 +1,6 @@
 
+// Source: https://www.youtube.com/watch?v=7Cjb7Xj8fEI
+// Reactive programming using javascript Proxy API
 
 let data = { price: 100, quantity: 3, sale: 0.5 };
 var target = null;
@@ -11,7 +13,6 @@ class Dep {
     if (target && !this.subscribers.includes(target)) {
       this.subscribers.push(target);
     }
-    console.log(this.subscribers);
   }
   notify() {
     this.subscribers.forEach(sub => sub());
@@ -46,11 +47,11 @@ var salePrice = 0;
 var total = 0;
 
 watcher(() => {
-  total = data.price * data.quantity;  // so this is the trick
+  total = data.price * data.quantity;
 });
 
 watcher(() => {
-  salePrice = data.price * data.sale;  // so this is the trick
+  salePrice = data.price * data.sale;
 });
 
 watcher(() => {
